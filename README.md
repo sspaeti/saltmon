@@ -17,7 +17,7 @@ make names             # edit names.json (MAC -> friendly name)
 ```
 
 TUI keys: `q` quit · `s` cycle sort (▼ marks the sorted column) · `n` rename selected device
-· `k` kick selected device off Wi-Fi for N minutes · `u` unblock · `a` also show offline hosts
+· `j`/`k` move · `K` kick selected device off Wi-Fi for N minutes · `u` unblock · `a` also show offline hosts
 · `g` guest only · `w` Wi-Fi only · `+`/`-` poll interval.
 
 ## Kick / temporary block

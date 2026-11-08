@@ -8,7 +8,7 @@ live Mbit/s figures.
     uv run saltmon.py --once          # two samples, print one table, exit
     uv run saltmon.py --log out/samples.jsonl   # also append every poll to JSONL
 
-Keys in the TUI: q quit · s sort · n rename · k kick (block N min) · u unblock · a show offline · g guest-only · w wifi-only · +/- interval
+Keys in the TUI: q quit · s sort · n rename · j/k move · K kick (block N min) · u unblock · a show offline · g guest-only · w wifi-only · +/- interval
 """
 
 from __future__ import annotations
@@ -500,7 +500,9 @@ def run_tui(interval: float, log: Path | None) -> int:
             Binding("q", "quit", "Quit"),
             Binding("s", "cycle_sort", "Sort"),
             Binding("n", "rename", "Name"),
-            Binding("k", "kick", "Kick"),
+            Binding("K", "kick", "Kick"),
+            Binding("j", "cursor_down", "", show=False),
+            Binding("k", "cursor_up", "", show=False),
             Binding("u", "unblock", "Unblock"),
             Binding("a", "toggle_offline", "Offline too"),
             Binding("g", "toggle_guest", "Guest only"),
@@ -695,6 +697,12 @@ def run_tui(interval: float, log: Path | None) -> int:
                 return None
             mac = str(table.coordinate_to_cell_key(table.cursor_coordinate).row_key.value)
             return next((r for r in self.rows if r.mac == mac), None)
+
+        def action_cursor_down(self) -> None:
+            self.query_one(DataTable).action_cursor_down()
+
+        def action_cursor_up(self) -> None:
+            self.query_one(DataTable).action_cursor_up()
 
         def action_kick(self) -> None:
             r = self._selected_row()
