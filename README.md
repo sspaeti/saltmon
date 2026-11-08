@@ -18,11 +18,11 @@ make names             # edit names.json (MAC -> friendly name)
 
 TUI keys: `q` quit · `s` cycle sort (▼ marks the sorted column) · `n` rename selected device
 · `j`/`k` move · `K` kick selected device off Wi-Fi for N minutes · `u` unblock · `a` also show offline hosts
-· `g` guest only · `w` Wi-Fi only · `+`/`-` poll interval.
+· `g` guest only · `w` Wi-Fi only · `+` poll more often / `-` less often (1–60 s, default 3 s; Mb/s is averaged over that window).
 
 ## Kick / temporary block
 
-`k` adds the device's MAC to the router's Wi-Fi MAC-filter blacklist on all four
+`K` adds the device's MAC to the router's Wi-Fi MAC-filter blacklist on all four
 SSIDs (main + guest, both bands) and removes it again when the time is up (also
 on next TUI start, or `make unblock`). State lives in `out/blocks.json`.
 CLI: `uv run saltmon.py --block <mac> 60`, `--unblock <mac>`, `--unblock-all`.

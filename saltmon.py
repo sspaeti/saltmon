@@ -8,7 +8,7 @@ live Mbit/s figures.
     uv run saltmon.py --once          # two samples, print one table, exit
     uv run saltmon.py --log out/samples.jsonl   # also append every poll to JSONL
 
-Keys in the TUI: q quit · s sort · n rename · j/k move · K kick (block N min) · u unblock · a show offline · g guest-only · w wifi-only · +/- interval
+Keys in the TUI: q quit · s sort · n rename · j/k move · K kick (block N min) · u unblock · a show offline · g guest-only · w wifi-only · + poll faster / - poll slower (1-60 s)
 """
 
 from __future__ import annotations
